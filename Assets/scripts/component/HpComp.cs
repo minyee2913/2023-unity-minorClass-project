@@ -10,4 +10,6 @@ public class HpComp : ThingComp
         now = max = max_;
         min = 0;
     }
+
+    public float Rate() => (float)now / max;
 }

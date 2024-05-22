@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : Entity
+public class NonPlayer : Entity
 {
-    public Player() {
-        AddComp(new InvComp());
+    public NonPlayer() {
     }
 }

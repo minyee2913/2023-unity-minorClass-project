@@ -11,11 +11,5 @@ public class HpComp : ThingComp
         min = 0;
     }
 
-
     public float Rate() => (float)now / max;
-    
-    public override void Tick()
-    {
-        Debug.Log("TICK!");
-    }
 }

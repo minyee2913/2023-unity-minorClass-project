@@ -6,4 +6,6 @@ public class NonPlayer : Entity
 {
     public NonPlayer() {
     }
+
+    public override string Name => "";
 }

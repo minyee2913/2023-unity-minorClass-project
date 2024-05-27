@@ -1,4 +1,5 @@
 
+using System.Collections.Generic;
 using UnityEngine;
 
 public class MoveBehavior : Behavior {
@@ -14,12 +15,13 @@ public class MoveBehavior : Behavior {
 
     public override void InitSteps()
     {
-        //List<Vector2Int> path;
-        //bool result = ThingSystem.Instance.PathFind(from, to, out path);
-        //if (result)
-        //{
-        //    foreach (Vector2Int tile in path)
-        //        Debug.Log(tile);
-        //}
+        steps = new List<Step>()
+        {
+            new MoveStep(moveComp, new Vector3Int(0, 0, 0), new Vector3Int(1, 0, 0)),
+            new MoveStep(moveComp, new Vector3Int(1, 0, 0), new Vector3Int(2, 0, 0)),
+            new MoveStep(moveComp, new Vector3Int(2, 0, 0), new Vector3Int(3, 0, 0)),
+            new MoveStep(moveComp, new Vector3Int(3, 0, 0), new Vector3Int(4, 0, 0)),
+            new MoveStep(moveComp, new Vector3Int(4, 0, 0), new Vector3Int(5, 0, 0)),
+        };
     }
 }

@@ -16,10 +16,12 @@ public class ThingSystem : MonoBehaviour
 
     public GameObject player;
 
+    public Vector3Int startPos;
+
     void Start()
     {
         Instance = this;
-        InstantiateThing(player, Vector3Int.zero);
+        InstantiateThing(player, startPos);
     }
 
     void Update()

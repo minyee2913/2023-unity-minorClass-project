@@ -4,4 +4,7 @@ using UnityEngine;
 
 public class InvComp : ThingComp
 {
+    public InvComp(Thing thing) : base(thing)
+    {
+    }
 }

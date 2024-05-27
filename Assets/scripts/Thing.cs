@@ -6,45 +6,75 @@ using UnityEngine;
 
 public abstract class Thing : MonoBehaviour
 {
-    protected List<ThingComp> comps = new();
+    protected List<ThingComp> ths = new();
+
+    // Variables
     public abstract string Name { get; }
+    private Vector3Int pos;
+    public Vector3Int Pos {
+        get => pos;
+        set
+        {
+            ThingSystem.Instance.Move(pos, value);
+            pos = value;
+        }
+    }
 
-    public void AddComp(ThingComp comp) {
-        comps.Add(comp);
+    // Methods
+    public ThingComp AddComp(ThingComp comp)
+    {
+        ths.Add(comp);
         comp.OnAdded();
+        
+        return comp;
     }
-    public void RemoveComp(ThingComp comp) => comps.Remove(comp);
-    public bool HasComp(Type compType) => comps.Any((c)=> c.GetType() == compType);
 
-    //virtual funcs
-    public virtual void OnInstantiate() {}
-    public virtual void PreTick() {
-        foreach (ThingComp comp in comps) {
-            comp.PreTick();
-        }
+    public bool HasComp(Type type_)
+    {
+        return ths.Any(th => th.GetType() == type_);
     }
-    public virtual void Tick() {
-        foreach (ThingComp comp in comps) {
-            comp.Tick();
-        }
+
+    public ThingComp GetComp(Type type_)
+    {
+        return ths.Find(th => th.GetType() == type_);
     }
-    public virtual void PostTick() {
-        foreach (ThingComp comp in comps) {
-            comp.PostTick();
-        }
-    }
-    public virtual void OnStart() {
-        foreach (ThingComp comp in comps) {
-            comp.OnStart();
-        }
-    }
-    public virtual void OnFinish() {
-        foreach (ThingComp comp in comps) {
-            comp.OnStart();
-        }
-    }
+
+    // LifeCycle
+    public virtual void OnInstantiate() { }
 
     public virtual void OnUpdate()
     {
+        foreach (ThingComp th in ths)
+            th.Update();
+    }
+
+    public virtual void PreTick()
+    {
+        foreach (ThingComp th in ths)
+            th.PreTick();
+    }
+
+    public virtual void Tick()
+    {
+        foreach (ThingComp th in ths)
+            th.Tick();
+    }
+
+    public virtual void PostTick()
+    {
+        foreach (ThingComp th in ths)
+            th.PostTick();
+    }
+
+    public virtual void OnStart()
+    {
+        foreach (ThingComp th in ths)
+            th.OnStart();
+    }
+
+    public virtual void OnFinish()
+    {
+        foreach (ThingComp th in ths)
+            th.OnFinish();
     }
 }

@@ -4,15 +4,10 @@ using UnityEngine;
 
 public abstract class Entity : Thing
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void OnInstantiate()
     {
-        
-    }
+        base.OnInstantiate();
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        AddComp(new BehaviorComp(this));
     }
 }

@@ -6,7 +6,7 @@ public class HpComp : ThingComp
 {
     public int min, now, max;
 
-    public HpComp(int max_){
+    public HpComp(Thing thing, int max_) : base(thing) {
         now = max = max_;
         min = 0;
     }

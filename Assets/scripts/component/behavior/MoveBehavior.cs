@@ -22,6 +22,8 @@ public class MoveBehavior : Behavior {
             new MoveStep(moveComp, new Vector3Int(2, 0, 0), new Vector3Int(3, 0, 0)),
             new MoveStep(moveComp, new Vector3Int(3, 0, 0), new Vector3Int(4, 0, 0)),
             new MoveStep(moveComp, new Vector3Int(4, 0, 0), new Vector3Int(5, 0, 0)),
+            new MoveStep(moveComp, new Vector3Int(5, 0, 0), new Vector3Int(6, 0, 0)),
+            new MoveStep(moveComp, new Vector3Int(6, 0, 0), new Vector3Int(7, 0, 0)),
         };
     }
 }

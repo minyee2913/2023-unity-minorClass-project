@@ -14,14 +14,16 @@ public class ThingSystem : MonoBehaviour
     private Dictionary<Vector3Int, Thing> map = new();
     private float tickTime = 0;
 
-    public GameObject player;
+    public Player player;
+    public Wall wall;
 
     public Vector3Int startPos;
 
     void Start()
     {
         Instance = this;
-        InstantiateThing(player, startPos);
+        InstantiateThing(player.gameObject, startPos);
+        InstantiateThing(wall.gameObject, new Vector3Int(2, 0));
     }
 
     void Update()

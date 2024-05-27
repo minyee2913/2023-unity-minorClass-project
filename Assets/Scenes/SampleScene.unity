@@ -152,7 +152,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64d1edcaebd1b49439e7463268cefdfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1725707479540711511, guid: 73aff6825855c9c4aa23099bb4a55174, type: 3}
+  player: {fileID: 2833799787330032468, guid: 73aff6825855c9c4aa23099bb4a55174, type: 3}
+  wall: {fileID: 8477602575651443032, guid: e777f94ee54e6bd418d3d22b8d8c4460, type: 3}
   startPos: {x: 0, y: 0, z: 0}
 --- !u!4 &651833698
 Transform:

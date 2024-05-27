@@ -9,6 +9,7 @@ public class ThingSystem : MonoBehaviour
     private List<Thing> newThings = new();
     private List<Thing> delThings = new();
     private List<Thing> things = new();
+    private Dictionary<Vector3Int, Thing> maps = new();
     public int tickRate = 1;
     private float tickTime = 0;
     public Player player;
@@ -31,6 +32,24 @@ public class ThingSystem : MonoBehaviour
             PostTick();
             DestroyThings();
         }
+
+        UpdateThings();
+    }
+
+    private void UpdateThings()
+    {
+        foreach (Thing th in things) {
+            th.OnUpdate();
+        }
+    }
+
+    public Thing FindThing(Vector3Int pos) {
+        Thing val;
+        if (maps.TryGetValue(pos, out val)) {
+            return val;
+        }
+
+        return null;
     }
 
     public void DestroyThings()

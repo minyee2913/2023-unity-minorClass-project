@@ -43,4 +43,8 @@ public abstract class Thing : MonoBehaviour
             comp.OnStart();
         }
     }
+
+    public virtual void OnUpdate()
+    {
+    }
 }

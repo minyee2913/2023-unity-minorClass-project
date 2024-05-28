@@ -11,7 +11,7 @@ public class Player : Entity
         base.OnInstantiate();
 
         AddComp(new HpComp(this, 100));
-        AddComp(new MoveComp(this, 60));
+        AddComp(new MoveComp(this, 30));
     }
 
     public override void OnStart()

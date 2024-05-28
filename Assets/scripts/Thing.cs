@@ -28,7 +28,11 @@ public abstract class Thing : MonoBehaviour
         
         return comp;
     }
-
+    public void InitPos(Vector3Int pos)
+    {
+        this.pos = pos;
+        transform.position = new Vector3(pos.x, pos.y, pos.z);
+    }
     public bool HasComp(Type type_)
     {
         return ths.Any(th => th.GetType() == type_);

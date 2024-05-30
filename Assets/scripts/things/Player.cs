@@ -20,6 +20,6 @@ public class Player : Entity
 
         MoveComp moveComp = (MoveComp)GetComp(typeof(MoveComp));
         BehaviorComp behaviorComp = (BehaviorComp)GetComp(typeof(BehaviorComp));
-        behaviorComp.SetBehavior(new MoveBehavior(this, Vector3Int.zero, Vector3Int.one));
+        behaviorComp.SetBehavior(new MoveBehavior(this, Pos, new Vector3Int(10, 0)));
     }
 }

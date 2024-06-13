@@ -3,9 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class ThingSystem : MonoBehaviour
+public class ThingSystem : MonoBehaviour, ISavable
 {
+    public string Name => "things";
+    public string GetJSON() { return null; }
+    public IEnumerable<ISavable> GetChilds() {
+        foreach (Thing thing in things)
+            yield return thing;
+    }
     public static ThingSystem Instance { get; private set; }
+
+    public string SavableName => Name;
 
     private List<(Vector3Int, Thing)> newThings = new();
     private List<Thing> delThings = new();
@@ -17,11 +25,20 @@ public class ThingSystem : MonoBehaviour
 
     public Vector3Int startPos;
 
-    void Start()
+    void Awake()
     {
         Instance = this;
 
-        InstantiateThing(pig, new Vector3Int());
+        TextAsset items = Resources.Load<TextAsset>("items");
+        ItemWrapper itemsWrapper = JsonUtility.FromJson<ItemWrapper>(items.text);
+
+        foreach (ItemJson data in itemsWrapper.datas) {
+            Database<ItemData>.Load(
+                new ItemData(data.name, data.id, data.tags)
+            );
+        }
+
+        Debug.Log(Database<ItemData>.ConditionData((i)=>i.Id == "2913:stone").Name);
     }
 
     void Update()
@@ -193,7 +210,7 @@ public class ThingSystem : MonoBehaviour
             // ���� �� ���� �̵�
             foreach (Vector3Int direction in Directions)
             {
-                Vector3Int neighborPos = new Vector3Int(pos.x + direction.x, pos.y + direction.y);
+                Vector3Int neighborPos = new Vector3Int(pos.x + direction.x, pos.y + direction.y, pos.z + direction.z);
                 if (closedList.ContainsKey(neighborPos) || map.ContainsKey(neighborPos))
                     continue;
 
@@ -285,7 +302,7 @@ public class ThingSystem : MonoBehaviour
             // ���� �� ���� �̵�
             foreach (Vector3Int direction in Directions)
             {
-                Vector3Int neighborPos = new Vector3Int(pos.x + direction.x, pos.y + direction.y);
+                Vector3Int neighborPos = new Vector3Int(pos.x + direction.x, pos.y + direction.y, pos.z + direction.z);
                 if (closedList.ContainsKey(neighborPos) || map.ContainsKey(neighborPos))
                     continue;
 

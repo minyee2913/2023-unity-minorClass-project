@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public abstract class Thing : MonoBehaviour
+public abstract class Thing : MonoBehaviour, ISavable
 {
     protected List<ThingComp> ths = new();
 
@@ -20,9 +20,26 @@ public abstract class Thing : MonoBehaviour
         }
     }
 
+    public string SavableName => $"{name}-{{0}}";
+
+    public List<ThingComp> comps = new();
+
+    public string GetJSON()
+    {
+        return $"{Pos}";
+    }
+
+    public IEnumerable<ISavable> GetChilds()
+    {
+        foreach (ThingComp comp in comps) {
+            yield return comp;
+        }
+    }
+
     // Methods
     public ThingComp AddComp(ThingComp comp)
     {
+        comps.Add(comp);
         ths.Add(comp);
         comp.OnAdded();
         

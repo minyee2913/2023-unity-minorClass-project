@@ -16,7 +16,7 @@ public class Pig : NonPlayer
         Vector3Int? dest = ThingSystem.Instance.GetRandomEmptyTile(Pos, 30);
         if (dest == null || Random.Range(0, 1f) <= 0.3f) {
             curState = 0;
-            BehaviorComp.SetBehavior(new IdleBehavior(Random.Range(30, 180)));
+            BehaviorComp.SetBehavior(new IdleBehavior(Random.Range(10, 40)));
         } else {
             curState = 1;
             BehaviorComp.SetBehavior(new MoveBehavior(this, Pos, dest.Value));

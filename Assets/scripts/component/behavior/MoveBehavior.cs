@@ -19,7 +19,7 @@ public class MoveBehavior : Behavior
     {
         steps = new();
         List<Vector3Int> path;
-        if (ThingSystem.Instance.PathFind(moveComp.Thing.Pos, to, out path, 200))
+        if (ThingSystem.Instance.PathFind(moveComp.Thing.Pos, to, out path, 20))
             for (int i = 0; i < path.Count - 1; i++)
                 steps.Add(new MoveStep(moveComp, path[i], path[i + 1]));
     }

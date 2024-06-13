@@ -1,0 +1,22 @@
+{
+    "datas": [
+        {
+            "input_items": [
+                {
+                    "item": "item_a",
+                    "amount": 1
+                },
+                {
+                    "item": "item_b",
+                    "amount": 1
+                }
+            ],
+            "output_items": [
+                {
+                    "item": "item_a",
+                    "amount": 1
+                }
+            ]
+        }
+    ]
+}

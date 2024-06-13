@@ -14,6 +14,12 @@ public class BehaviorComp : ThingComp
         nowBehavior = behavior;
     }
 
+    public void StopBehavior()
+    {
+        nowBehavior = null;
+        CurBehavior = null;
+    }
+
 
     public override void Tick()
     {

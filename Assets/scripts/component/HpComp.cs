@@ -13,10 +13,10 @@ public class HpComp : ThingComp
 
     public float Rate() => (float)now / max;
 
-    public override void OnAdded() => Debug.Log("OnAdded()");
-    public override void OnStart() => Debug.Log("OnStart()");
-    public override void OnFinish() => Debug.Log("OnFinish()");
-    public override void PreTick() => Debug.Log("PreTick()");
-    public override void Tick() => Debug.Log("Tick()");
-    public override void PostTick() => Debug.Log("PostTick()");
+    // public override void OnAdded() => Debug.Log("OnAdded()");
+    // public override void OnStart() => Debug.Log("OnStart()");
+    // public override void OnFinish() => Debug.Log("OnFinish()");
+    // public override void PreTick() => Debug.Log("PreTick()");
+    // public override void Tick() => Debug.Log("Tick()");
+    // public override void PostTick() => ;
 }

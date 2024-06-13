@@ -1,0 +1,19 @@
+{
+    "datas": [
+        {
+            "name": "돌",
+            "id": "2913:stone",
+            "tags": [
+                "tag_a",
+                "tag_b"
+            ]
+        },
+        {
+            "name": "Item B",
+            "id": "item_b",
+            "tags": [
+                "tag_b"
+            ]
+        }
+    ]
+}

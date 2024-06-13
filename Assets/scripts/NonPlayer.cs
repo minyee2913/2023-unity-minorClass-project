@@ -1,8 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.PlasticSCM.Editor.WebApi;
-using UnityEngine;
-
 public abstract class NonPlayer : Entity
 {
     protected int curState = 0;

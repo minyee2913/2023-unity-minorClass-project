@@ -56,5 +56,7 @@ public class MoveComp : ThingComp
 
         Thing.Pos = to;
         Thing.transform.position = new Vector3(from.x, from.y, from.z);
+
+        Thing.transform.LookAt(to);
     }
 }

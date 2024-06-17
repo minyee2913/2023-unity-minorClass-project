@@ -10,6 +10,8 @@ public class Player : Entity
 
     public int stone = 0;
     public int pork = 0;
+    public int potion = 0;
+    public int hamer = 0;
 
     private BehaviorComp behaviorComp;
 
@@ -43,7 +45,7 @@ public class Player : Entity
                 behaviorComp.StopBehavior();
             }
         }
-        if (Input.GetMouseButton(0) && behaviorComp.CurBehavior == null)
+        if (Input.GetMouseButton(0) && behaviorComp.CurBehavior == null && !InventoryUI.Instance.isOpened)
         {
             RaycastHit hit;
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))

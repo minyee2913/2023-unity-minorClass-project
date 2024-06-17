@@ -77,6 +77,17 @@ public class ThingSystem : MonoBehaviour, ISavable
         return null;
     }
 
+    public Thing FindRangeThing(Vector3Int pos, float distance)
+    {
+        foreach (Thing th in things) {
+            if (Vector3Int.Distance(pos, th.Pos) <= distance) {
+                return th;
+            }
+        }
+        
+        return null;
+    }
+
     // Thing
     public void InstantiateThing(GameObject prefab, Vector3Int pos)
     {
@@ -106,17 +117,25 @@ public class ThingSystem : MonoBehaviour, ISavable
         delThings.Add(thing);
     }
 
+    public void DestroyThingForce(Thing thing)
+    {
+        var obj = thing.gameObject;
+        things.Remove(thing);
+        Destroy(thing);
+        Destroy(obj);
+    }
+
     private void DestroyThings()
     {
         foreach (Thing thing in delThings)
         {
             things.Remove(thing);
-            map.Remove(map.First(pair => pair.Value == thing).Key);
+            if (thing.Name != "pig") map.Remove(map.First(pair => pair.Value == thing).Key);
         }
         foreach (Thing thing in delThings)
         {
             thing.OnFinish();
-            Destroy(thing.gameObject);
+            if (thing != null) Destroy(thing.gameObject);
         }
         delThings.Clear();
     }

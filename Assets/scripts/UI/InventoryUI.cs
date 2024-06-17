@@ -34,7 +34,13 @@ public class InventoryUI : MonoBehaviour
         Instance = this;
     }
 
-    void Error() {
+    public void Error(string txt) {
+        errorMsg.text = txt;
+
+        Invoke("ErrorEnd", 1.3f);
+    }
+
+    void ErrorEnd() {
         errorMsg.text = "";
     }
 

@@ -11,9 +11,11 @@ public class Player : Entity
     public int stone = 0;
     public int pork = 0;
     public int potion = 0;
-    public int hamer = 0;
+    public int hamer = 1;
 
     private BehaviorComp behaviorComp;
+
+    public GameObject explode;
 
     public override void OnInstantiate()
     {
@@ -56,12 +58,28 @@ public class Player : Entity
 
                 var th = ThingSystem.Instance.FindThing(target);
                 if (th == null) {
+                    Thing thh = ThingSystem.Instance.FindRangeThing(target, 1);
+
+                    if (thh == null) {
+                    } else if (thh.Name == "pig") {
+                        if (Vector3Int.Distance(Pos, thh.Pos) < 2f && !thh.stop) {
+                            StartCoroutine(DestroyPig(thh));
+                        }
+                    }
+
                     behaviorComp.SetBehavior(new MoveBehavior(this, Pos, target));
+
                 } else if (th.Name == "Wall") {
                     if (Vector3Int.Distance(Pos, target) < 1.5f) {
                         behaviorComp.SetBehavior(new BreakBehavior(this, Pos, target));
                     } else {
                         behaviorComp.SetBehavior(new MoveBehavior(this, Pos, target));
+                    }
+
+                    highligh.transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
+                } else if (th.Name == "pig") {
+                    if (Vector3Int.Distance(Pos, target) < 2f && !th.stop) {
+                        StartCoroutine(DestroyPig(th));
                     }
 
                     highligh.transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
@@ -74,5 +92,27 @@ public class Player : Entity
         InvComp comp = (InvComp)GetComp(typeof(InvComp));
         Inventory inventory = comp.Inventory;
         ItemData data = Database<ItemData>.ConditionData(data => data.Id == "item_a");
+    }
+
+    IEnumerator DestroyPig(Thing th) {
+        if (hamer <= 0) {
+            InventoryUI.Instance.Error("망치가 없습니다!");
+            yield break;
+        }
+
+        hamer--;
+
+        th.stop = true;
+
+        LeanTween.move(th.gameObject, th.transform.position + new Vector3(0, 2), 0.5f);
+
+        yield return new WaitForSeconds(0.8f);
+
+        var exp = Instantiate(explode, th.transform.position, Quaternion.identity);
+        Destroy(exp, 1);
+
+        pork++;
+
+        ThingSystem.Instance.DestroyThing(th);
     }
 }

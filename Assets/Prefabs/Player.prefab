@@ -77,9 +77,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f61104a215795c44be681e710298134, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stop: 0
   highlight: {fileID: 8952098228599523015, guid: 9dd5e2d769339964584b0744a8fe17c9, type: 3}
   stone: 0
   pork: 0
+  potion: 0
+  hamer: 1
+  explode: {fileID: 2433282508537954060, guid: 3ef3ae421f71c5c4e97fe12dc2fc6312, type: 3}
 --- !u!95 &5509482590938723810
 Animator:
   serializedVersion: 5

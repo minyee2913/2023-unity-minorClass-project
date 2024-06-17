@@ -23,6 +23,7 @@ public abstract class Thing : MonoBehaviour, ISavable
     public string SavableName => $"{name}-{{0}}";
 
     public List<ThingComp> comps = new();
+    public bool stop = false;
 
     public string GetJSON()
     {
@@ -65,36 +66,42 @@ public abstract class Thing : MonoBehaviour, ISavable
 
     public virtual void OnUpdate()
     {
+        if (stop) return;
         foreach (ThingComp th in ths)
             th.Update();
     }
 
     public virtual void PreTick()
     {
+        if (stop) return;
         foreach (ThingComp th in ths)
             th.PreTick();
     }
 
     public virtual void Tick()
     {
+        if (stop) return;
         foreach (ThingComp th in ths)
             th.Tick();
     }
 
     public virtual void PostTick()
     {
+        if (stop) return;
         foreach (ThingComp th in ths)
             th.PostTick();
     }
 
     public virtual void OnStart()
     {
+        if (stop) return;
         foreach (ThingComp th in ths)
             th.OnStart();
     }
 
     public virtual void OnFinish()
     {
+        if (stop) return;
         foreach (ThingComp th in ths)
             th.OnFinish();
     }

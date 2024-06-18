@@ -48,7 +48,7 @@ public class MapSystem : MonoBehaviour {
     }
 
     void Start() {
-        prng = new(seed);
+        prng = new(UnityEngine.Random.Range(-999999, 9999999));
         map = new int[width, height];
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {

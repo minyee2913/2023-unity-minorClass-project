@@ -111,7 +111,7 @@ public class Player : Entity
         var exp = Instantiate(explode, th.transform.position, Quaternion.identity);
         Destroy(exp, 1);
 
-        pork++;
+        pork += Random.Range(1, 3);
 
         ThingSystem.Instance.DestroyThing(th);
     }

@@ -23,7 +23,7 @@ public class SimpleRecipe : MonoBehaviour {
     }
 
     public void RecipeHamer() {
-        if (Player.Instance.stone >= 50) {
+        if (Player.Instance.stone >= 10 && Player.Instance.pork >= 1) {
             Player.Instance.stone -= 10;
             Player.Instance.pork -= 1;
 

@@ -36,6 +36,7 @@ public class InventoryUI : MonoBehaviour
 
     public void Error(string txt) {
         errorMsg.text = txt;
+        SoundsLab.Instance.Play("ohno", 0.3f);
 
         Invoke("ErrorEnd", 1.3f);
     }
@@ -88,6 +89,8 @@ public class InventoryUI : MonoBehaviour
     }
 
     public void Close() {
+        SoundsLab.Instance.Play("click", 0.1f);
+
         isOpened = false;
         inventory.OnInventoryUpdate -= OnInventoryUpdate;
         inventory = null;
@@ -95,6 +98,8 @@ public class InventoryUI : MonoBehaviour
     }
 
     public void Open() {
+        SoundsLab.Instance.Play("click", 0.1f);
+        
         isOpened = true;
         Thing thing = ThingSystem.Instance.FindThingsWithComp(typeof(InvComp))[0];
         InvComp invComp = (InvComp)thing.GetComp(typeof(InvComp));

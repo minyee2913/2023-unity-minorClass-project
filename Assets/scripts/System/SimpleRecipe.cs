@@ -3,6 +3,8 @@ using UnityEngine;
 public class SimpleRecipe : MonoBehaviour {
     public void RecipePotion() {
         if (Player.Instance.stone >= 8 && Player.Instance.pork >= 4) {
+            SoundsLab.Instance.Play("click", 0.1f);
+
             Player.Instance.stone -= 8;
             Player.Instance.pork -= 4;
 
@@ -14,6 +16,8 @@ public class SimpleRecipe : MonoBehaviour {
 
     public void RecipePork() {
         if (Player.Instance.stone >= 50) {
+            SoundsLab.Instance.Play("click", 0.1f);
+
             Player.Instance.stone -= 50;
 
             Player.Instance.pork++;
@@ -24,6 +28,8 @@ public class SimpleRecipe : MonoBehaviour {
 
     public void RecipeHamer() {
         if (Player.Instance.stone >= 10 && Player.Instance.pork >= 1) {
+            SoundsLab.Instance.Play("click", 0.1f);
+            
             Player.Instance.stone -= 10;
             Player.Instance.pork -= 1;
 

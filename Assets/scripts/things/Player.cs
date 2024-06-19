@@ -100,14 +100,18 @@ public class Player : Entity
             yield break;
         }
 
+        SoundsLab.Instance.Play("quing", 0.3f);
+
         hamer--;
 
         th.stop = true;
 
         LeanTween.move(th.gameObject, th.transform.position + new Vector3(0, 2), 0.5f);
+        LeanTween.rotateZ(th.gameObject, 180, 0.5f);
 
         yield return new WaitForSeconds(0.8f);
 
+        SoundsLab.Instance.Play("click", 0.1f);
         var exp = Instantiate(explode, th.transform.position, Quaternion.identity);
         Destroy(exp, 1);
 

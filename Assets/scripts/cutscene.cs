@@ -43,12 +43,15 @@ public class cutscene : MonoBehaviour
         for (int i = 1; i <= 6; i++) {
             year.text = (2024 - i).ToString();
 
+            SoundsLab.Instance.Play("click");
+
             yield return new WaitForSeconds(0.5f);
         }
 
         Vector2 realVec = year.transform.localScale;
 
         LeanTween.scale(year.gameObject, new Vector3(realVec.x * 1.5f, realVec.x * 1.5f), 0.1f);
+        SoundsLab.Instance.Play("pababa", 0.05f);
         yield return new WaitForSeconds(0.1f);
         LeanTween.scale(year.gameObject, new Vector3(realVec.x * 1.4f, realVec.x * 1.4f), 0.1f);
 
@@ -58,6 +61,8 @@ public class cutscene : MonoBehaviour
         LeanTween.scale(year.gameObject, yearSc, 1f);
 
         yield return new WaitForSeconds(1.2f);
+
+        SoundsLab.Instance.Play("touwng", 0.3f);
 
         year.gameObject.SetActive(false);
         comment.gameObject.SetActive(true);
@@ -69,41 +74,53 @@ public class cutscene : MonoBehaviour
         yield return new WaitForSeconds(1f);
         mOutline.gameObject.SetActive(true);
         mOutline.transform.localPosition = new Vector3(0, 100);
+        SoundsLab.Instance.Play("click");
 
         yield return new WaitForSeconds(1f);
         LeanTween.moveLocal(mOutline.gameObject, new Vector3(0, 0), 0.2f).setEase(LeanTweenType.easeOutCubic);
+        SoundsLab.Instance.Play("click");
 
         yield return new WaitForSeconds(1f);
         LeanTween.moveLocal(mOutline.gameObject, new Vector3(0, -100), 0.2f).setEase(LeanTweenType.easeOutCubic);
+        SoundsLab.Instance.Play("click");
 
         yield return new WaitForSeconds(1f);
         LeanTween.moveLocal(mOutline.gameObject, new Vector3(0, 0), 0.2f).setEase(LeanTweenType.easeOutCubic);
+        SoundsLab.Instance.Play("click");
 
         yield return new WaitForSeconds(1.3f);
         LeanTween.moveLocal(mm.gameObject, new Vector3(-225f, -156f), 0.1f).setEase(LeanTweenType.easeOutCubic);
         LeanTween.scale(mm.gameObject, new Vector3(1.5f, 1.5f), 0.05f);
+        SoundsLab.Instance.Play("likeVill", 0.3f);
 
         yield return new WaitForSeconds(0.8f);
         comment2.gameObject.SetActive(true);
 
         yield return new WaitForSeconds(1.6f);
         comment2.text = "흙";
+        SoundsLab.Instance.Play("likeVill", 0.3f);
 
         yield return new WaitForSeconds(0.3f);
         comment2.text = "흙흙";
+        SoundsLab.Instance.Play("likeVill", 0.3f, true);
 
         yield return new WaitForSeconds(0.3f);
         comment2.text = "흙흙흙";
+        SoundsLab.Instance.Play("likeVill", 0.3f, true);
 
         yield return new WaitForSeconds(0.3f);
         comment2.text = "흙흙흙흙";
+        SoundsLab.Instance.Play("likeVill", 0.3f, true);
 
         yield return new WaitForSeconds(0.3f);
         comment2.text = "흙파기 맵";
+        SoundsLab.Instance.Play("likeVill", 0.3f, true);
 
         yield return new WaitForSeconds(1.4f);
         comment2.text = "";
         mm.gameObject.SetActive(false);
+
+        SoundsLab.Instance.Play("tc", 0.5f);
 
         yield return new WaitForSeconds(1.2f);
         comment.text = "모두가 흙을 파면서 행복해 하였다.";
@@ -124,12 +141,18 @@ public class cutscene : MonoBehaviour
         yield return new WaitForSeconds(1.8f);
         comment.text = "그래서 만들었다.";
 
+        SoundsLab.Instance.Stop("tc");
         yield return new WaitForSeconds(2f);
+        SoundsLab.Instance.Play("intro", 0.3f);
 
         LeanTween.scale(logo, Vector2.one, 1.5f);
 
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(1.8f);
 
-        LeanTween.scale(gameObject, Vector2.zero, 0.3f);
+        LeanTween.scale(gameObject, Vector2.zero, 0.8f);
+
+        yield return new WaitForSeconds(1.2f);
+
+        SoundsLab.Instance.Play("pz");
     }
 }

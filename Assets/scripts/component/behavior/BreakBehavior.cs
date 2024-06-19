@@ -25,6 +25,8 @@ public class BreakBehavior : Behavior
         if (thing != null) {
             ThingSystem.Instance.DestroyThing(thing);
             Player.Instance.stone++;
+
+            SoundsLab.Instance.Play("dig", 0.3f);
         }
     }
 }

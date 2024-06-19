@@ -121,7 +121,7 @@ public class MapSystem : MonoBehaviour {
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
                 if (map[j, i] == 0) {
-                    if (UnityEngine.Random.Range(0, 1f) < 0.016f) {
+                    if (UnityEngine.Random.Range(0, 1f) < 0.02f) {
                         ThingSystem.Instance.InstantiateThing(pig, new Vector3Int(i, 0, j));
 
                         map[j, i] = 3;
